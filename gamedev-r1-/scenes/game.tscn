@@ -1,0 +1,98 @@
+[gd_scene load_steps=11 format=3 uid="uid://kmnpjau74sk8"]
+
+[ext_resource type="Script" uid="uid://vb2wvu7c23mg" path="res://scenes/script/game.gd" id="1_iywne"]
+[ext_resource type="PackedScene" uid="uid://p8cvnsh25p3n" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://cruuusf05r3ty" path="res://assets/R1 game background.png" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://3p221l3jd1pj" path="res://scenes/crusher.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://7di5xf81a1kr" path="res://scenes/grabber.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://rr8c0i5h3bp8" path="res://scenes/stalker.tscn" id="6_gee14"]
+[ext_resource type="Script" uid="uid://b5y8lly5i8chq" path="res://scenes/script/timer.gd" id="6_u5sy4"]
+[ext_resource type="FontFile" uid="uid://j2j1rk16jb" path="res://assets/cour.ttf" id="7_gee14"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gee14"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_gee14"]
+distance = -292.0
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_iywne")
+
+[node name="background" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_gee14")
+
+[node name="Sprite2D" type="Sprite2D" parent="background"]
+z_index = -100
+z_as_relative = false
+position = Vector2(3, -38)
+scale = Vector2(0.405519, 0.405519)
+texture = ExtResource("2_yqjtg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background"]
+shape = SubResource("WorldBoundaryShape2D_gee14")
+
+[node name="player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(-56, 225)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="crusher" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(-428, -200)
+
+[node name="grabber" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(-194, -198)
+
+[node name="stalker" parent="." instance=ExtResource("6_gee14")]
+position = Vector2(89, -190)
+hover_y = -180.0
+slam_y = 200.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visibility_layer = 513
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.444
+offset_right = 37.444
+offset_bottom = 0.311996
+grow_horizontal = 2
+script = ExtResource("6_u5sy4")
+
+[node name="Minutes" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 10.0
+offset_right = 183.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("7_gee14")
+theme_override_font_sizes/font_size = 46
+text = "00:"
+horizontal_alignment = 2
+
+[node name="Seconds" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 10.0
+offset_right = 266.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("7_gee14")
+theme_override_font_sizes/font_size = 46
+text = "00."
+horizontal_alignment = 2
+
+[node name="MSec" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 9.0
+offset_right = 340.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("7_gee14")
+theme_override_font_sizes/font_size = 46
+text = "000"
+horizontal_alignment = 2
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Panel"]
+autostart = true

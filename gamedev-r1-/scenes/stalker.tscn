@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://rr8c0i5h3bp8"]
+
+[ext_resource type="Script" uid="uid://c6maqc1y8b2ha" path="res://scenes/script/stalker.gd" id="1_5g5gq"]
+[ext_resource type="Texture2D" uid="uid://6eg0lucr7g1f" path="res://assets/Stomp.png" id="2_2gtbd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4aggm"]
+radius = 79.0
+height = 174.0
+
+[node name="stalker" type="Node2D"]
+z_index = 20
+z_as_relative = false
+script = ExtResource("1_5g5gq")
+hover_tex = ExtResource("2_2gtbd")
+drop_tex = ExtResource("2_2gtbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-17.9557, -14.0263)
+scale = Vector2(0.359986, 0.359986)
+texture = ExtResource("2_2gtbd")
+region_enabled = true
+region_rect = Rect2(2756.75, 1326.5, 621, 625.5)
+
+[node name="Hitbox" type="Area2D" parent="."]
+z_index = 2
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-12, 0)
+shape = SubResource("CapsuleShape2D_4aggm")

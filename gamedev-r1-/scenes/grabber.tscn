@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://7di5xf81a1kr"]
+
+[ext_resource type="Script" uid="uid://dpkv0m1n0nnkb" path="res://scenes/script/grabber.gd" id="1_snmkx"]
+[ext_resource type="Texture2D" uid="uid://6eg0lucr7g1f" path="res://assets/Stomp.png" id="2_g6pxq"]
+[ext_resource type="Texture2D" uid="uid://chngkg7qfahs6" path="res://assets/Grab.png" id="3_g6pxq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_snmkx"]
+radius = 75.0
+height = 176.0
+
+[node name="Grabber" type="Node2D"]
+z_index = 20
+z_as_relative = false
+script = ExtResource("1_snmkx")
+grab_y = 200.0
+hover_tex = ExtResource("2_g6pxq")
+drop_tex = ExtResource("3_g6pxq")
+
+[node name="GrabBox" type="Area2D" parent="."]
+position = Vector2(68, 79)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabBox"]
+z_index = 2
+position = Vector2(-63, -64)
+shape = SubResource("CapsuleShape2D_snmkx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 2)
+scale = Vector2(0.371895, 0.371895)
+texture = ExtResource("2_g6pxq")
+region_enabled = true
+region_rect = Rect2(2716.5, 1335.38, 672.75, 641.25)
