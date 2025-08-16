@@ -42,6 +42,7 @@ position = Vector2(-428, -200)
 
 [node name="grabber" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-194, -198)
+hover_y = -180.0
 
 [node name="stalker" parent="." instance=ExtResource("6_gee14")]
 position = Vector2(89, -190)

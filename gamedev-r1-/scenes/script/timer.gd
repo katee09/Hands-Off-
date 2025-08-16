@@ -1,7 +1,3 @@
-# =========================
-# script/timer.gd  (attach to: CanvasLayer/Panel that holds Minutes/Seconds/MSec labels)
-# Pins the timer to top-right and ensures labels exist.
-# =========================
 extends Control
 
 @export var run_when_paused := false
